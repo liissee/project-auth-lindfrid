@@ -50,7 +50,7 @@ const authenticateUser = async (req, res, next) => {
     req.user = user //what does this mean?
     next() //when to use next? (calling the next() function which allows the proteced endpoint to continue execution)
   } else {
-    res.status(401).json({ loggedOut: true })
+    res.status(403).json({ message: "You need to login to access this page" })
   }
 }
 
@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
 
 // Create user
 // Database only saves correct users, but doesn't display error when incorrect users are posted
-app.post('/user', async (req, res) => {
+app.post('/users', async (req, res) => {
   try {
     const { name, email, password } = req.body
     // Why not await when endpoint is async?
@@ -73,7 +73,7 @@ app.post('/user', async (req, res) => {
   }
 })
 
-app.post('/session', async (req, res) => {
+app.post('/sessions', async (req, res) => {
   const user = await User.findOne({ email: req.body.email })
   if (user && bcrypt.compareSync(req.body.password, user.password)) {
     res.json({ userId: user._id, accessToken: user.accessToken })
@@ -82,8 +82,8 @@ app.post('/session', async (req, res) => {
   }
 })
 
-app.get('/secret', authenticateUser)
-app.get('/secret', (req, res) => {
+app.get('/secrets', authenticateUser)
+app.get('/secrets', (req, res) => {
   // res.json("Secreeeet")
   res.json({ secret: 'this is a super secret meessage' }) //what is the difference: res.json and res.send? 
 })
