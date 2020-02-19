@@ -14,10 +14,12 @@
     "@babel/preset-env": "^7.8.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
+    "components": "^0.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.9.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "styled": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
