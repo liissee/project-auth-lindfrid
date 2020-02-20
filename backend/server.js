@@ -56,7 +56,7 @@ const authenticateUser = async (req, res, next) => {
 
 // Start defining your routes here
 app.get('/', (req, res) => {
-  res.send('Hello world!!!')
+  res.send('Hello backend world!!!')
 })
 
 // Create user

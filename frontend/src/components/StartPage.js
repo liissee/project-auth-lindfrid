@@ -5,6 +5,6 @@ import { } from "./Styling"
 export const StartPage = () => {
 
   return (
-    <div>I'm a startpage! Welcome.</div>
+    <div>I'm a frontend startpage! Welcome.</div>
   )
 }

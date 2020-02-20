@@ -38,17 +38,23 @@ export const Input = styled.input`
   bottom: 0;
   left: 0;
   width: 100%;
+  /* added to see input fields */
+  height: 50px;
+  transition: border-color $standard-transition;
+  /* stop */
   z-index: 2;
   display: block;
   background: transparent;
   line-height: 54px;
+  margin: 10px 0px;
   padding: 0 10px;
   font-size: 15px;
   border: none;
   color: #333;
   border-radius: 3px;
-  border: 1px solid transparent;
-  transition: border-color $standard-transition;
+  /* border: 1px solid transparent; */
+  border: 1px solid blue;
+  
   &:focus, &:active {
     outline: none;
     border-color: #ededed; 
