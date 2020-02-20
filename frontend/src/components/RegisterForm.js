@@ -45,7 +45,10 @@ const handleSubmit = event => {
                 value={name}
                 onChange={event => setName(event.target.value)}>
               </input>
-            </label>
+            </label> {name.length < 2 && name.length != 0 && (<p>Name is too short</p>
+            )}
+            {name.length > 20 && (<p>Name is too long</p>
+            )}
             <p>Email</p>
             <label>
               <input
@@ -63,7 +66,8 @@ const handleSubmit = event => {
                 value={password}
                 onChange={event => setPassword(event.target.value)}>
               </input>
-            </label>
+            </label>{password.length < 5 && password.length != 0 && (<p>Password is too short</p>
+            )}
             
             <button type="submit" 
             disabled={name.length > 1 && name.length < 21 && password.length > 4 && email ? false : true}
