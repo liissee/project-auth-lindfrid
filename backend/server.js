@@ -60,11 +60,11 @@ app.get('/', (req, res) => {
 })
 
 // Create user
-// Database only saves correct users, but doesn't display error when incorrect users are posted
+// Database only saves correct users, but doesn't display error when incorrect users are posted / Fixed
 app.post('/users', async (req, res) => {
   try {
     const { name, email, password } = req.body
-    // Why not await when endpoint is async?
+    // What happens here???
     const user = new User({ name, email, password: bcrypt.hashSync(password) })
     const saved = await user.save()
     res.status(201).json(saved)

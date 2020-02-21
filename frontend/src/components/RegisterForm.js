@@ -1,8 +1,5 @@
-// create form to create new user
-//Frida
-
-import React, {useState, Link} from 'react'
-import styled from 'styled-components'
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 import { Heading, FieldContainer, Form, Label, Input, Button } from "./Styling"
 
 const url = "http://localhost:8080/users"
@@ -20,12 +17,6 @@ const handleSubmit = event => {
     body: JSON.stringify({ name, email, password }),
     headers: { 'Content-Type': 'application/json'}
   })
-    // .then(res => {
-    //   if (res.status !== 200) {
-    //     throw new Error("Not 200");
-    //   } else {
-    //     return res;
-    //   } })
     .then(res => res.json())
     .then(setRegistred(true))
     .catch(err => console.log('Error:', err))
@@ -46,10 +37,11 @@ const handleSubmit = event => {
                 onChange={event => setName(event.target.value)}>
               </Input>
             </Label>
-            Name {name.length < 2 && name.length != 0 && (" is too short"
+            Name {name.length < 2 && name.length !== 0 && (" is too short"
             )}
             {name.length > 20 && (" is too long"
-            )}
+            )} 
+
             <Label>
               <Input
                 type="text"
@@ -67,7 +59,7 @@ const handleSubmit = event => {
                 onChange={event => setPassword(event.target.value)}>
               </Input>
             </Label>
-            Password {password.length < 5 && password.length != 0 && (" is too short"
+            Password {password.length < 5 && password.length !== 0 && (" is too short"
             )}
             
             <Button type="submit" 
@@ -81,9 +73,9 @@ const handleSubmit = event => {
     {registred && (
       <FieldContainer>
         <Heading>Registration done!</Heading>
-        {/* <Link to={`/login`}>
+        <Link to={`/login`}>
           <Heading>Log in!</Heading>
-        </Link> */}
+        </Link>
       </FieldContainer>
     )}
     </FieldContainer>
