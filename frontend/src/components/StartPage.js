@@ -1,10 +1,13 @@
 import React from 'react'
-import { } from "./Styling"
+import { Heading, FieldContainer, Image } from "./Styling"
 
 
 export const StartPage = () => {
 
   return (
-    <div>I'm a frontend startpage! Welcome.</div>
+    <FieldContainer>
+      <Heading>You're logged in!</Heading>
+      <img src="https://i.giphy.com/media/d7rSiIwVhNMIURGiMw/giphy.webp"></img>
+    </FieldContainer>
   )
 }
