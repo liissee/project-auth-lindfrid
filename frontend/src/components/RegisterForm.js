@@ -9,26 +9,43 @@ const [name, setName] = useState("")
 const [password, setPassword] = useState("")
 const [email, setEmail] = useState("")
 const [registred, setRegistred] = useState(false)
+const [failure, setFailure] = useState(false)
 
 const handleSubmit = event => {
   event.preventDefault()
   fetch(url, {
     method: 'POST',
     body: JSON.stringify({ name, email, password }),
-    headers: { 'Content-Type': 'application/json'}
+    headers: { 'Content-Type': 'application/json' }
   })
-    .then(res => res.json())
-    .then(setRegistred(true))
+    //Här händer en callback funktion
+    .then(res => {
+      // console.log(res.json())
+      if (res.status !== 201) {
+        return res.json().then(json => console.log("hej", json.message)),
+        setFailure(true)
+      } else {
+        return setRegistred(true)
+      }
+    })
     .catch(err => console.log('Error:', err))
 }
+//   .catch (err => {
+//   setRegistred(false)
+//   console.log('Fetch Error', err);
+// });
     return (
       
       <FieldContainer>
       {!registred && ( 
       <FieldContainer>
-        <Heading>Register form</Heading>
+        {!failure && (
+          <Heading>Register form</Heading>   
+        )}   
+        { failure && (
+          <Heading>User not registred. Try using another name or email!</Heading>
+        )}
         <Form onSubmit={handleSubmit}>
-            
             <Label>
               <Input
                 type="text"
