@@ -7,7 +7,6 @@ export const Form = styled.form`
   max-width: 480px;
   background: #ededed;
   border-radius: 8px;
-  box-shadow: 0 2px 0 1px rgba(0,0,0,0.1);
   `
 export const FieldContainer = styled.div`
   position: relative;
@@ -32,26 +31,29 @@ export const FieldContainer = styled.div`
 `
 
 export const Input = styled.input`
-  position: absolute;
+  /* position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 0; */
   width: 100%;
+  transition: border-color $standard-transition;
   z-index: 2;
   display: block;
   background: transparent;
   line-height: 54px;
+  margin: 10px 0px;
   padding: 0 10px;
   font-size: 15px;
   border: none;
   color: #333;
   border-radius: 3px;
   border: 1px solid transparent;
-  transition: border-color $standard-transition;
+  border-bottom: 1px solid black;
   &:focus, &:active {
     outline: none;
-    border-color: #ededed; 
+    border-color: #ededed;
+    border-bottom: 2px solid black;
   }
 `
 export const Heading = styled.h1`
