@@ -5,13 +5,12 @@ import { Heading, FieldContainer, Form, Label, Input, Button } from "./Styling"
 const url = "http://localhost:8080/users"
 
 export const RegisterForm = () => {
-const [name, setName] = useState("")
-const [password, setPassword] = useState("")
-const [email, setEmail] = useState("")
-const [registred, setRegistred] = useState(false)
-const [failure, setFailure] = useState(false)
-
-const history = useHistory()
+  const [name, setName] = useState("")
+  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("")
+  const [registred, setRegistred] = useState(false)
+  const [failure, setFailure] = useState(false)
+  const history = useHistory()
 
 const handleSubmit = event => {
   event.preventDefault()

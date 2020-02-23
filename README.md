@@ -1,13 +1,26 @@
-# Project Auth
+# Project Auth - Pair programming
 
-Replace this readme with your own information about your project.
+In this project we have built an API with authentication to implement a registration flow, and a frontend with forms to register, sign in, and view some content once you're logged in.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We have a backend API and a React frontend. 
+We have created a User model using mongoose with properties for our registered user, and to store the user's access token.
+
+On the frontend side we have built a registration form which POSTs to our API. We have sored the access token in the browser by using local storage and hen we have used that token when making other request to our API. 
+
+Once the user is logged in, it will see our "secret" endpoint.  
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+-React
+-React Routes
+-MongoDB
+-Mongoose
+-Node.js
+-Express
+-Styled components
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Frontend: https://auth-api-lindfrid.netlify.com/
+
+Backend: https://auth-api-lindfrid.herokuapp.com/

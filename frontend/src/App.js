@@ -8,9 +8,9 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/" component={LoginForm} />
         <Route exact path="/secret" component={StartPage} />
         <Route exact path="/register" component={RegisterForm} />
-        <Route exact path="/" component={LoginForm} />
       </Switch>
     </BrowserRouter>
   )
