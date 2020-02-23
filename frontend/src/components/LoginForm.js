@@ -34,7 +34,7 @@ export const LoginForm = () => {
       }).then(({ accessToken }) => {
         if (accessToken) {
           window.localStorage.setItem("accessToken", accessToken)
-          history.push(`/`)
+          history.push(`/secret`)
         }
       }).catch(err => {
         setErrorMessage(err.message)

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
-import { Button, Heading, FieldContainer, Wrapper } from "./Styling"
+import { Button, Heading, Wrapper } from "./Styling"
 
 
 const url = "http://localhost:8080/secrets";
@@ -8,6 +8,7 @@ const url = "http://localhost:8080/secrets";
 export const StartPage = props => {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
 
   //Getting the accessToken from the browser's localStorage
   //and sending it as the header "Authorization"
@@ -23,7 +24,7 @@ export const StartPage = props => {
         if (!res.ok) {
           throw new Error("Access denied", JSON);
         } else {
-          return res.json();
+          return res.json()
         }
       })
       .then(json => setMessage(json.secret))
@@ -34,13 +35,13 @@ export const StartPage = props => {
 
   return (
     <Wrapper>
-      <div>
-        <Heading>You're logged in!</Heading>
-        <Heading>{message}</Heading>
-      </div>
-      <div>
-        <img src="https://i.giphy.com/media/d7rSiIwVhNMIURGiMw/giphy.webp"></img>
-      </div>
+      {message &&
+        <div>
+          <Heading>You're logged in!</Heading>
+          <Heading>{message}</Heading>
+          <img src="https://i.giphy.com/media/d7rSiIwVhNMIURGiMw/giphy.webp"></img>
+        </div>
+      }
       <div>
         {errorMessage && <div>{errorMessage}</div>}
         <Button
@@ -51,7 +52,7 @@ export const StartPage = props => {
             Log out</Link>
         </Button>
       </div>
-
     </Wrapper>
   )
 }
+
