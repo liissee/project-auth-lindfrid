@@ -5,47 +5,42 @@ import { Heading, FieldContainer, Form, Label, Input, Button } from "./Styling"
 const url = "http://localhost:8080/users"
 
 export const RegisterForm = () => {
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
-  const [email, setEmail] = useState("")
-  const [registred, setRegistred] = useState(false)
-  const [failure, setFailure] = useState(false)
+const [name, setName] = useState("")
+const [password, setPassword] = useState("")
+const [email, setEmail] = useState("")
+const [registred, setRegistred] = useState(false)
+const [failure, setFailure] = useState(false)
 
-  const handleSubmit = event => {
-    event.preventDefault()
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({ name, email, password }),
-      headers: { 'Content-Type': 'application/json' }
+const handleSubmit = event => {
+  event.preventDefault()
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({ name, email, password }),
+    headers: { 'Content-Type': 'application/json' }
+  })
+    //Här händer en callback funktion
+    .then(res => {
+      // console.log(res.json())
+      if (res.status !== 201) {
+        return res.json().then(json => console.log("hej", json.message)),
+        setFailure(true)
+      } else {
+        return setRegistred(true)
+      }
     })
-      //Här händer en callback funktion
-      .then(res => {
-        // console.log(res.json())
-        if (res.status !== 201) {
-          return res.json().then(json => console.log("hej", json.message)),
-            setFailure(true)
-        } else {
-          return setRegistred(true)
-        }
-      })
-      .catch(err => console.log('Error:', err))
-  }
-  //   .catch (err => {
-  //   setRegistred(false)
-  //   console.log('Fetch Error', err);
-  // });
-  return (
-
-    <FieldContainer>
-      {!registred && (
-        <FieldContainer>
-          {!failure && (
-            <Heading>Register form</Heading>
-          )}
-          {failure && (
-            <Heading>User not registred. Try using another name or email!</Heading>
-          )}
-          <Form onSubmit={handleSubmit}>
+    .catch(err => console.log('Error:', err))
+}
+    return (    
+      <FieldContainer>
+      {!registred && ( 
+      <FieldContainer>
+        {!failure && (
+          <Heading>Register form</Heading>   
+        )}   
+        { failure && (
+          <Heading>User not registred. Try using another name or email!</Heading>
+        )}
+        <Form onSubmit={handleSubmit}>
             <Label>
               <Input
                 type="text"
@@ -84,17 +79,17 @@ export const RegisterForm = () => {
               onClick={handleSubmit}>
               SIGN UP
             </Button>
-          </Form>
-        </FieldContainer>
-      )}
-      {registred && (
-        <FieldContainer>
-          <Heading>Registration done!</Heading>
-          <Link to={`/login`}>
-            <Heading>Log in!</Heading>
-          </Link>
-        </FieldContainer>
-      )}
+        </Form>
+      </FieldContainer>
+    )}
+    {registred && (
+      <FieldContainer>
+        <Heading>Registration done!</Heading>
+        <Link to={`/login`}>
+          <Heading>Log in!</Heading>
+        </Link>
+      </FieldContainer>
+    )}
     </FieldContainer>
   )
 }
