@@ -87,7 +87,7 @@ app.get('/secrets', authenticateUser)
 //This will only be shown if the next()-function is called from the middleware
 app.get('/secrets', (req, res) => {
   // res.json("Secreeeet")
-  res.json({ secret: 'this is a super secret meessage' }) //what is the difference: res.json and res.send? 
+  res.json({ secret: 'This is a super secret message' }) //what is the difference: res.json and res.send? 
 })
 
 // Start the server

@@ -8,6 +8,9 @@ export const Wrapper = styled.div`
   max-width: 480px;
   background: #ededed;
   border-radius: 8px;
+  &.link-text {
+    text-decoration: none;
+  }
   `
 export const Form = styled.form`
   margin: 60px auto;
@@ -78,6 +81,7 @@ export const Label = styled.label`
   font-size: 13px;
   padding: 10px;  
 `
+
 
 export const Button = styled.button`
   display: block;

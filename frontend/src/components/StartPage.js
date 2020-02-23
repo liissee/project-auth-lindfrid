@@ -9,7 +9,6 @@ export const StartPage = props => {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-
   //Getting the accessToken from the browser's localStorage
   //and sending it as the header "Authorization"
   const accessToken = window.localStorage.getItem("accessToken");
@@ -22,7 +21,7 @@ export const StartPage = props => {
     })
       .then(res => {
         if (!res.ok) {
-          throw new Error("Access denied", JSON);
+          throw new Error("You need to sign in to view this page", JSON);
         } else {
           return res.json()
         }
@@ -39,7 +38,7 @@ export const StartPage = props => {
         <div>
           <Heading>You're logged in!</Heading>
           <Heading>{message}</Heading>
-          <img src="https://i.giphy.com/media/d7rSiIwVhNMIURGiMw/giphy.webp"></img>
+          <img src="https://i.giphy.com/media/d7rSiIwVhNMIURGiMw/giphy.webp" alt="failed to merge branches"></img>
         </div>
       }
       <div>
@@ -48,8 +47,8 @@ export const StartPage = props => {
           onClick={() => window.localStorage.removeItem("accessToken")}
           type="button"
         >
-          <Link to={`/`}>
-            Log out</Link>
+          <Link className="link-text" to={`/`}>
+            {errorMessage ? "Sign in" : "Log out"}</Link>
         </Button>
       </div>
     </Wrapper>
