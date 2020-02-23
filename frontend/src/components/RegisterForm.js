@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Heading, FieldContainer, Form, Label, Input, Button } from "./Styling"
 
 const url = "http://localhost:8080/users"
@@ -41,43 +41,41 @@ const reDirect = () => {
       <FieldContainer>
       {!registred && ( 
       <FieldContainer>
+        <Form onSubmit={handleSubmit}>
         {!failure && (
           <Heading>Create new user</Heading>   
         )}   
         { failure && (
           <Heading>User not created. Try using another name or email!</Heading>
         )}
-        <Form onSubmit={handleSubmit}>
+            
+            <Label>
             Name {name.length < 2 && name.length !== 0 && (" is too short"
                 )}
                 {name.length > 20 && (" is too long"
                 )}
-            <Label>
               <Input
                 type="text"
                 required
-                placeholder="Name"
                 value={name}
                 onChange={event => setName(event.target.value)}>
               </Input>
             </Label>
-            Email
             <Label>
+              Email
               <Input
                 type="text"
-                placeholder="Your@Email.com"
                 required
                 value={email}
                 onChange={event => setEmail(event.target.value)}>
               </Input>
             </Label>
-            Password {password.length < 5 && password.length !== 0 && (" is too short"
-            )}
             <Label>
+              Password {password.length < 5 && password.length !== 0 && (" is too short"
+              )}
               <Input
                 type="password"
                 required
-                placeholder="Password"
                 value={password}
                 onChange={event => setPassword(event.target.value)}>
               </Input>

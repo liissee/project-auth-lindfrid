@@ -41,6 +41,10 @@ export const LoginForm = () => {
       })
   }
 
+  const reDirect = () => {
+    history.push(`/register`)
+  }
+
   return (
     <FieldContainer>
       <Form>
@@ -65,6 +69,10 @@ export const LoginForm = () => {
         <Button type="submit"
           onClick={handleSignin}>
           LOGIN
+           </Button>
+           <Button type="button"
+          onClick={reDirect}>
+          Not a member?
            </Button>
       </Form>
     </FieldContainer >
