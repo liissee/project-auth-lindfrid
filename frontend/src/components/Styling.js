@@ -98,3 +98,14 @@ export const Button = styled.button`
     cursor: pointer;
   }
   `
+  export const Link = styled.link`
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: -1px -1px rgba(0,0,0,0.1);
+  transition: background $standard-transition;
+  &:hover {
+    background: lighten(#33cc77,10%);
+    cursor: pointer;
+  }
+  `

@@ -48,7 +48,7 @@ export const StartPage = props => {
           onClick={() => window.localStorage.removeItem("accessToken")}
           type="button"
         >
-          <Link to={`/login`}>
+          <Link to={`/`}>
             Log out</Link>
         </Button>
       </div>
