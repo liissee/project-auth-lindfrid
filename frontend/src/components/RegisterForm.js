@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Heading, FieldContainer, Form, Label, Input, Button } from "./Styling"
 
@@ -52,7 +52,7 @@ const handleSubmit = event => {
             Name {name.length < 2 && name.length !== 0 && (" is too short"
             )}
             {name.length > 20 && (" is too long"
-            )} 
+            )}
 
             <Label>
               <Input
@@ -73,11 +73,11 @@ const handleSubmit = event => {
             </Label>
             Password {password.length < 5 && password.length !== 0 && (" is too short"
             )}
-            
-            <Button type="submit" 
+
+            <Button type="submit"
               disabled={name.length > 1 && name.length < 21 && password.length > 4 && email ? false : true}
               onClick={handleSubmit}>
-                SIGN UP
+              SIGN UP
             </Button>
         </Form>
       </FieldContainer>
@@ -91,5 +91,5 @@ const handleSubmit = event => {
       </FieldContainer>
     )}
     </FieldContainer>
-    )
+  )
 }

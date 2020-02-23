@@ -1,5 +1,14 @@
 import styled from 'styled-components'
 
+
+export const Wrapper = styled.div`
+  margin: 60px auto;
+  display: block;
+  padding: 20px 30px 30px 30px;
+  max-width: 480px;
+  background: #ededed;
+  border-radius: 8px;
+  `
 export const Form = styled.form`
   margin: 60px auto;
   display: block;

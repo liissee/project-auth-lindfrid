@@ -47,7 +47,7 @@ app.use(bodyParser.json())
 const authenticateUser = async (req, res, next) => {
   const user = await User.findOne({ accessToken: req.header('Authorization') })
   if (user) {
-    req.user = user //what does this mean?
+    req.user = user //what does this mean? 
     next() //when to use next? (calling the next() function which allows the proteced endpoint to continue execution)
   } else {
     res.status(403).json({ message: "You need to login to access this page" })
@@ -78,17 +78,17 @@ app.post('/sessions', async (req, res) => {
   if (user && bcrypt.compareSync(req.body.password, user.password)) {
     res.json({ userId: user._id, accessToken: user.accessToken })
   } else {
-    res.json({ notFound: true })
+    //Failure because user doesn't exist or encrypted password doesn't match
+    res.status(400).json({ notFound: true })
   }
 })
 
 app.get('/secrets', authenticateUser)
+//This will only be shown if the next()-function is called from the middleware
 app.get('/secrets', (req, res) => {
   // res.json("Secreeeet")
   res.json({ secret: 'this is a super secret meessage' }) //what is the difference: res.json and res.send? 
 })
-
-
 
 // Start the server
 app.listen(port, () => {
