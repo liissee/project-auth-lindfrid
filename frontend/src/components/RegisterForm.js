@@ -30,12 +30,7 @@ const handleSubmit = event => {
     })
     .catch(err => console.log('Error:', err))
 }
-//   .catch (err => {
-//   setRegistred(false)
-//   console.log('Fetch Error', err);
-// });
-    return (
-      
+    return (    
       <FieldContainer>
       {!registred && ( 
       <FieldContainer>
