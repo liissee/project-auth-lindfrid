@@ -63,10 +63,11 @@ export const RegisterForm = () => {
             <Label>
               Email
               <Input
+                lowercase
                 type="text"
                 required
                 value={email}
-                onChange={event => setEmail(event.target.value)}
+                onChange={event => setEmail(event.target.value.toLocaleLowerCase)}
               ></Input>
             </Label>
             <Label>
@@ -83,9 +84,9 @@ export const RegisterForm = () => {
               type="submit"
               disabled={
                 name.length > 1 &&
-                name.length < 21 &&
-                password.length > 4 &&
-                email
+                  name.length < 21 &&
+                  password.length > 4 &&
+                  email
                   ? false
                   : true
               }
