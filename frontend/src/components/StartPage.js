@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
-import { Button, Heading, Wrapper } from "./Styling"
+import { Link } from "react-router-dom";
+import { Button, Heading, Wrapper } from "./Styling";
 
-
-const url = "http://localhost:8080/secrets";
+const url = "https://auth-api-lindfrid.herokuapp.com/secrets";
 
 export const StartPage = props => {
   const [message, setMessage] = useState("");
@@ -23,7 +22,7 @@ export const StartPage = props => {
         if (!res.ok) {
           throw new Error("You need to sign in to view this page", JSON);
         } else {
-          return res.json()
+          return res.json();
         }
       })
       .then(json => setMessage(json.secret))
@@ -34,13 +33,16 @@ export const StartPage = props => {
 
   return (
     <Wrapper>
-      {message &&
+      {message && (
         <div>
           <Heading>You're logged in!</Heading>
           <Heading>{message}</Heading>
-          <img src="https://i.giphy.com/media/d7rSiIwVhNMIURGiMw/giphy.webp" alt="failed to merge branches"></img>
+          <img
+            src="https://i.giphy.com/media/d7rSiIwVhNMIURGiMw/giphy.webp"
+            alt="failed to merge branches"
+          ></img>
         </div>
-      }
+      )}
       <div>
         {errorMessage && <div>{errorMessage}</div>}
         <Button
@@ -48,10 +50,10 @@ export const StartPage = props => {
           type="button"
         >
           <Link className="link-text" to={`/`}>
-            {errorMessage ? "Sign in" : "Log out"}</Link>
+            {errorMessage ? "Sign in" : "Log out"}
+          </Link>
         </Button>
       </div>
     </Wrapper>
-  )
-}
-
+  );
+};
