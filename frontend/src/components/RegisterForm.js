@@ -67,7 +67,7 @@ export const RegisterForm = () => {
                 type="text"
                 required
                 value={email}
-                onChange={event => setEmail(event.target.value.toLocaleLowerCase)}
+                onChange={event => setEmail(event.target.value.toLowerCase())}
               ></Input>
             </Label>
             <Label>

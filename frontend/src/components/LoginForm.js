@@ -54,7 +54,7 @@ export const LoginForm = () => {
             type="email"
             required
             value={email}
-            onChange={event => setEmail(event.target.value)}
+            onChange={event => setEmail(event.target.value.toLowerCase())}
           />
         </Label>
         <Label>
